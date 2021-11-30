@@ -27,7 +27,7 @@ public class Login {
         HttpUrlConnectionUtil.getQCode(headers, "https://qr.m.jd.com/show?appid=133&size=147&t=" + now);
         Runtime.getRuntime().exec("cmd /c QCode.png");
         URI url = new URI("https://qr.m.jd.com/show?appid=133&size=147&t=" + now);
-        Map<String, List<String>> stringListMap = new HashMap<String, List<String>>();
+        Map<String, List<String>> stringListMap;
         stringListMap = Start.manager.get(url, requestHeaders);
         List cookieList = stringListMap.get("Cookie");
         String cookies = cookieList.get(0).toString();
@@ -49,15 +49,14 @@ public class Login {
             }
             Thread.sleep(3000);
         }
-	String qrCodeTicketValidation = HttpUrlConnectionUtil.get(headers, "https://passport.jd.com/uc/qrCodeTicketValidation?t=" + ticket);
+        String qrCodeTicketValidation = HttpUrlConnectionUtil.get(headers, "https://passport.jd.com/uc/qrCodeTicketValidation?t=" + ticket);
         stringListMap = Start.manager.get(url, requestHeaders);
         cookieList = stringListMap.get("Cookie");
         cookies = cookieList.get(0).toString();
         headers.put("Cookie", cookies);
     }
 
-    public static void close() throws IOException, InterruptedException {
-        WinDef.HWND hWnd;
+    public static void close() {
         final User32 user32 = User32.INSTANCE;
         user32.EnumWindows(new WinUser.WNDENUMPROC() {
             @Override

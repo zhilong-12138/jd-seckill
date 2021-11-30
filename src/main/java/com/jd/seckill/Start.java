@@ -21,7 +21,7 @@ public class Start {
     final static String headerAgentArg = "JD4iPhone/10.1.6 CFNetwork/1312 Darwin/21.0.0";
     final static String Referer = "Referer";
     final static String RefererArg = "https://passport.jd.com/new/login.aspx";
-    // 单手柄 100019378198 双手柄 100021367452 茅台 100012043978
+    // 100029524724
     static String pid = new Scanner(System.in).nextLine();
     static String eid = "X";
     static String fp = "X";
